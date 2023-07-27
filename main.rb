@@ -4,7 +4,7 @@ user_login = gets.chomp
 puts 'Введіть пароль до FTP'
 user_password = gets.chomp
 
-path_error_log = " " #вказую шлях до файлу на ПК
+path_error_log = " " #вказую шлях до файлу
 
 if File.exist?(path_error_log)   
 
