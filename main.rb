@@ -1,8 +1,8 @@
-puts 'Введіть логін до FTP'
-user_login = gets.chomp
+# puts 'Введіть логін до FTP'
+# user_login = gets.chomp
 
-puts 'Введіть пароль до FTP'
-user_password = gets.chomp
+# puts 'Введіть пароль до FTP'
+# user_password = gets.chomp
 
 path_error_log = " " #вказую шлях до файлу
 
@@ -10,19 +10,28 @@ if File.exist?(path_error_log)
 
     file_log = File.open(path_error_log, "a+")
     file_log_lines = file_log.readlines
-    anny = []
-    not_anny = []
+    errors = []
+    infos = []
+    others = []
     new =
         file_log_lines.each do |item_tmp|
-            if item_tmp.include?('Warning')
-                anny << item_tmp
+            if item_tmp.include?('ERROR')
+                errors << item_tmp            
+            elsif item_tmp.include?('INFO')
+                infos << item_tmp
             else
-                not_anny << item_tmp
+                others << item_tmp
             end
         end
 
-    file_new = File.open("#{__dir__}/sandbox1.txt", "a")
-    file_new.puts anny
+    file_errors = File.open("#{__dir__}/errors.txt", "a")
+    file_errors.puts errors
+
+    file_infos = File.open("#{__dir__}/infos.txt", "a")
+    file_infos.puts infos
+
+    file_others = File.open("#{__dir__}/others.txt", "a")
+    file_others.puts others
 else
     puts "У цій деректорії файл відсутній"
 end
