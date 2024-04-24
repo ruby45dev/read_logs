@@ -9,9 +9,9 @@ if File.exist?(path_error_log)
     others = []
     new =
         file_log_lines.each do |item_tmp|
-            if item_tmp.include?('ERROR')
+            if item_tmp.include?('ERROR:')
                 errors << item_tmp            
-            elsif item_tmp.include?('INFO')
+            elsif item_tmp.include?('INFO:')
                 infos << item_tmp
             else
                 others << item_tmp
